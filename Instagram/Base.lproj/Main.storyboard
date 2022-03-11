@@ -85,6 +85,59 @@
                     <view key="view" contentMode="scaleToFill" id="h90-gZ-raz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xA7-tf-lPD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="501" id="E6r-2j-fa9" customClass="postCell" customModule="Instagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="501"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E6r-2j-fa9" id="J1U-8x-VDm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="501"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8L1-g2-EUg">
+                                                    <rect key="frame" x="8" y="8" width="398" height="456"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="8L1-g2-EUg" secondAttribute="height" multiplier="199:228" id="0kh-xn-FxV"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Brian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9A-Rf-Ynf">
+                                                    <rect key="frame" x="8" y="472" width="59" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" text="wow i love photo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4K-AX-2uH">
+                                                    <rect key="frame" x="88" y="472" width="168" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="x9A-Rf-Ynf" firstAttribute="top" secondItem="8L1-g2-EUg" secondAttribute="bottom" constant="8" id="4pK-l4-A6d"/>
+                                                <constraint firstAttribute="trailing" secondItem="p4K-AX-2uH" secondAttribute="trailing" constant="158" id="5ug-uU-Mk9"/>
+                                                <constraint firstItem="x9A-Rf-Ynf" firstAttribute="leading" secondItem="J1U-8x-VDm" secondAttribute="leading" constant="8" id="8bj-47-fj6"/>
+                                                <constraint firstItem="8L1-g2-EUg" firstAttribute="leading" secondItem="J1U-8x-VDm" secondAttribute="leading" constant="8" id="FR3-dd-yb0"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="p4K-AX-2uH" secondAttribute="bottom" constant="8" id="G7p-Lc-q8O"/>
+                                                <constraint firstAttribute="trailing" secondItem="8L1-g2-EUg" secondAttribute="trailing" constant="8" id="G91-PB-0l5"/>
+                                                <constraint firstItem="8L1-g2-EUg" firstAttribute="top" secondItem="J1U-8x-VDm" secondAttribute="top" constant="8" id="d5Y-rt-Bih"/>
+                                                <constraint firstItem="p4K-AX-2uH" firstAttribute="leading" secondItem="x9A-Rf-Ynf" secondAttribute="trailing" constant="21" id="f8C-tA-fez"/>
+                                                <constraint firstItem="p4K-AX-2uH" firstAttribute="top" secondItem="8L1-g2-EUg" secondAttribute="bottom" constant="8" id="pfv-Al-fCB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="p4K-AX-2uH" id="2yy-vg-KSd"/>
+                                            <outlet property="photoVIew" destination="8L1-g2-EUg" id="8UH-Cp-2nA"/>
+                                            <outlet property="usernameLabel" destination="x9A-Rf-Ynf" id="Ncx-3i-laL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="uGz-qN-1vw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -95,10 +148,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="xA7-tf-lPD" id="xSW-KT-osa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uY4-h3-7vd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="69"/>
+            <point key="canvasLocation" x="1808.6956521739132" y="68.973214285714278"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="6Q2-wt-p6q">

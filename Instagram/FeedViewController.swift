@@ -6,24 +6,70 @@
 //
 
 import UIKit
+import Parse
+import AlamofireImage //dealing with images
 
-class FeedViewController: UIViewController {
-
+//STEP 1: ADD UITableViewDelegate, UITableViewDataSource
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var posts = [PFObject]()  // creating an empty array
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //STEP 2: INCLUDE delegate = self AND .dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //after you click post to post photo, you want it to appear back to the home page
+    //it pull in the photo you just created
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        //fetch the photo
+        let query = PFQuery(className:"Posts")
+        query.includeKey("Author") //to fetch the actually object
+        query.limit = 20 //getting the last 20
+        
+        //apond getting the photo back
+        query.findObjectsInBackground{ (posts, erro) in
+            if posts != nil{
+                self.posts = posts! //put the photo inside the array
+                self.tableView.reloadData()   //calling tableView to reload itself
+            }
+            
+        }
     }
-    */
-
+    
+    
+    
+    //STEP 4: ADD numberOfRowsInSection AND cellForRowAt
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell") as! postCell  //recycle cells
+        
+        //let me grab the post
+        let post = posts[indexPath.row]
+        
+        //configure the three outlets
+        let user = post["Author"] as! PFUser
+        cell.usernameLabel.text = user.username
+        
+        cell.captionLabel.text = post["Caption"] as? String
+        
+        //covert iamge to URL
+        let imageFile = post["image"] as! PFFileObject
+        let urlString = imageFile.url!
+        let url = URL(string: urlString)!
+        
+        //getting the photo
+        cell.photoVIew.af.setImage(withURL: url)
+        
+        return cell
+    }
 }

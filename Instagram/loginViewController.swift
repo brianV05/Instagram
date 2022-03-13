@@ -13,9 +13,35 @@ class loginViewController: UIViewController {
     //outlets
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signOutButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //create a gradient layer
+        let gradientLayer = CAGradientLayer()
+        //set the size of the layer to be equal to size of the display
+        gradientLayer.frame = view.bounds
+        
+        //set an array of color of your choice
+        gradientLayer.colors = [UIColor.systemBlue.cgColor,
+                                UIColor.systemPurple.cgColor,
+                                UIColor.systemPink.cgColor,
+                                UIColor.systemRed.cgColor,
+                                UIColor.systemOrange.cgColor,
+                                UIColor.systemYellow.cgColor,
+                                ]
+        //apply gradient to background
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        signInButton.layer.cornerRadius = 10
+        signInButton.layer.borderWidth = 1
+        signOutButton.layer.cornerRadius = 10
+        signOutButton.layer.borderWidth = 1
+        
+        
+       
     }
     
     //sign in action

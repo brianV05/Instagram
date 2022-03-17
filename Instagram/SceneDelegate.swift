@@ -25,8 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //storing where to look for the blue print
             let main = UIStoryboard(name: "Main", bundle: nil)
             
-            //opening up the blue print feedNavigationController
-            //
+            //opening up the blue print to feedNavigationController
             let feedNavigationController = main.instantiateViewController(withIdentifier: "FeedNavigationController")
             
             window?.rootViewController = feedNavigationController  //has root view controller

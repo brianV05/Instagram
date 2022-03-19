@@ -106,7 +106,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //infinite scroll
     func loadMorePosts(){
-        numberOfPosts = numberOfPosts + 10
+        numberOfPosts = numberOfPosts + 5
         
         //construct PFQuery
         let query = PFQuery(className: "Posts")
@@ -133,8 +133,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let comment = PFObject(className:"comments")
         comment["text"] = text
         comment["post"] = selectedPost           // you want the comment to know which post it is
-        comment["Author"] = PFUser.current()!           // you want to know who made the comment
-        
+        comment["Author"] = PFUser.current()!    // you want to know who made the comment
         // this is saying, that every post should have an array called comments, to add this comment to the array.
         selectedPost.add(comment, forKey: "comments")
         
